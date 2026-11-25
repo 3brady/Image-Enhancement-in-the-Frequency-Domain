@@ -1,17 +1,34 @@
-"""
-Owner: 2 (GUI, Tkinter). Pillow is used only to show images.
+import os
 
-What to implement:
-- run_app(methods): open a Tkinter window. `methods` is a dict {name: function}; call function(gray_image) to get the result.
-- Load image button (file dialog) -> cv2.imread(path, cv2.IMREAD_GRAYSCALE).
-- Dropdown (or buttons) to pick the filter from methods.keys().
-- Show original and result side by side (convert numpy -> PIL.Image.fromarray -> ImageTk.PhotoImage).
-- Save result button (cv2.imwrite into results/).
-- Optional: slider for the cutoff value.
+import cv2
+import numpy as np
 
-Done when: you can load an image, pick any filter, and see the result. You can test with fake filters before the others finish.
-Used by: main.py.
-"""
+from PySide6.QtCore import Qt
+from PySide6.QtGui import QImage, QPixmap
+from PySide6.QtWidgets import (
+    QApplication,
+    QComboBox,
+    QFileDialog,
+    QHBoxLayout,
+    QLabel,
+    QMainWindow,
+    QMessageBox,
+    QPushButton,
+    QVBoxLayout,
+    QWidget,
+)
 
-def run_app(methods):
-    ...
+RESULTS_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "results")
+PREVIEW_SIZE = 400
+
+
+def _pixmap(gray):
+    gray = np.ascontiguousarray(gray)
+    height, width = gray.shape
+    image = QImage(gray.data, width, height, gray.strides[0], QImage.Format.Format_Grayscale8)
+    return QPixmap.fromImage(image.copy()).scaled(
+        PREVIEW_SIZE,
+        PREVIEW_SIZE,
+        Qt.AspectRatioMode.KeepAspectRatio,
+        Qt.TransformationMode.SmoothTransformation,
+    )
