@@ -8,9 +8,12 @@ What to implement:
 Also yours: repo structure, README, and checking that every file follows the rule: grayscale uint8 in, grayscale uint8 out.
 """
 
+from methods import METHODS
+from gui import run_app
+
 
 def main():
-    ...
+    run_app(METHODS)
 
 
 if __name__ == "__main__":

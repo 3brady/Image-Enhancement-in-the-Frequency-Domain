@@ -1,10 +1,25 @@
-"""
-Owner: 1 (Integration lead).
+import lowpass
+import highpass
+import bandpass
+import homomorphic
+import spatial
 
-What to implement:
-- METHODS: a dict {display name: function} that lists every filter, so the GUI and compare.py never import the filters directly. Each function takes a grayscale uint8 image and returns one.
-- PAIRS: list of (frequency name, spatial name) used by compare.py:
-  Low-Pass vs Averaging, High-Pass vs Laplacian, Band-Pass vs DoG, Homomorphic vs Histogram Equalization.
+# should re check on it after all of them push their code
 
-Fill it in once the others push their files. Names below are the ones to use.
-"""
+METHODS = {
+    "Low-Pass": lowpass.lowpass,
+    "High-Pass": highpass.highpass,
+    "Band-Pass": bandpass.bandpass,
+    "Homomorphic": homomorphic.homomorphic,
+    "Histogram Equalization": spatial.histogram_equalization,
+    "Averaging": spatial.averaging,
+    "Laplacian": spatial.laplacian,
+    "DoG": spatial.dog,
+}
+
+PAIRS = [
+    ("Low-Pass", "Averaging"),
+    ("High-Pass", "Laplacian"),
+    ("Band-Pass", "DoG"),
+    ("Homomorphic", "Histogram Equalization"),
+]
