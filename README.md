@@ -1,9 +1,5 @@
 # Project 6: Image Enhancement in the Frequency Domain
 
-Python + OpenCV (cv2.dft / cv2.idft), Tkinter GUI, Pillow only to show images in Tkinter.
-
-Setup: `pip install -r requirements.txt` then `python main.py`
-
 | File | Owner |
 |---|---|
 | main.py, methods.py | 1. Integration lead |
@@ -17,4 +13,3 @@ Setup: `pip install -r requirements.txt` then `python main.py`
 | compare.py, images/, results/ | 9. Comparison |
 | report/ | 10. Report and slides |
 
-Rules: every filter takes a grayscale uint8 image and returns a grayscale uint8 image of the same size. Only edit your own file. Ask the owner of frequency.py if you need something from it.
