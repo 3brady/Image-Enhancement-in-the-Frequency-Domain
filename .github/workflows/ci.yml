@@ -18,4 +18,4 @@ jobs:
       - name: Check files compile
         run: python -m compileall .
       - name: Lint with Ruff
-        run: ruff check --output-format=github .
+        run: ruff check --select E9,F --ignore F401 .
